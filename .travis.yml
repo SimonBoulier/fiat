@@ -40,4 +40,4 @@ before_install:
   - sudo apt-get update -q
   - sudo apt-get install $COQ_PACKAGE -y
 
-script: ./etc/coq-scripts/timing/make-pretty-timed.sh -j2 $TARGETS $FLAGS && (make TIMED=1 -j2 $TARGETS; RV=$?; for i in Makefile.coq*; do echo "cat $i"; cat $i; done; exit ${RV})
+script: make printenv; ./etc/coq-scripts/timing/make-pretty-timed.sh -j2 $TARGETS $FLAGS && (make TIMED=1 -j2 $TARGETS; RV=$?; for i in Makefile.coq*; do echo "cat $i"; cat $i; done; exit ${RV})
